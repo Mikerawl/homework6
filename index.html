@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://bootswatch.com/4/cerulean/bootstrap.min.css">
+  <title>WeatherJS</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Select City</h5>
+         <form>
+           <input type="text" name="city" id="city" placeholder="City Name">
+           <button type="submit">Submit</button>
+         </form>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <h1 id="w-location"></h1>
+        <h3 class="text-dark" id="w-desc"></h3>
+        <h3 id="w-string"></h3>
+        <img id="w-icon">
+
+        <!-- This unordered list is included to add future functionality to this project for an improved portfolio item. -->
+        <!-- <ul id="w-details" class="list-group mt-3">
+          <li class="list-group-item" id="w-humidity"></li>
+          <li class="list-group-item" id="w-dewpoint"></li>
+          <li class="list-group-item" id="w-feels-like"></li>
+          <li class="list-group-item" id="w-wind"></li>
+        </ul> -->
+        
+      </div>
+    </div>
+  </div>
+
+ 
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+  <script src="script.js"></script>
+  
+</body>
+</html>
