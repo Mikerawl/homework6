@@ -68,3 +68,20 @@ async function getWeather() {
 
   fiveDayWeather.innerHTML = day;
 }
+
+function storeData() {
+  const addEntry = {
+    lat: lat,
+    lon: lon,
+    city: city,
+  };
+  searchedCities = JSON.parse(localStorage.getItem("searched-cities"));
+
+  cityExists = searchedCities.some((obj) => obj.city === addEntry.city);
+
+  if (!cityExists) {
+    localStorage.setItem("addEntry", JSON.stringify(addEntry));
+    searchedCities.push(addEntry);
+    localStorage.set("searched-cities", JSON.stringify(searchedCity));
+  }
+}
