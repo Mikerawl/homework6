@@ -56,7 +56,8 @@ async function getWeather() {
   
 
   dailies.forEach((daily) => {
-    day += `<h1 id="w-location">${daily.dt}</h1>
+    day += 
+    `<h1 id="w-location">${daily.dt}</h1>
   <h3 class="text-dark" id="w-desc">${daily.weather[0].description}</h3>
   <p id="w-string">${daily.temp.day}</p>
   <p>Wind ${daily.wind_deg}</p>
@@ -92,19 +93,20 @@ function retrieveData() {
   let existingCities = JSON.parse(localStorage.getItem("searched-cities"));
 console.log(existingCities[0].city);
   var searchedCities = document.getElementById("searched-cities");
-   console.log(searchedCities, "hello");
-
-location=""
+   
+let location="";
 
  existingCities.forEach((place) => {
     location += 
     `<li>
     hello
-      // <button>${place.city}</button>
-      // <div class="lat-button">${place.lat}</div>
-      // <div class="lon-button">${place.lon}</div>
+      <button>${place.city}</button>
+      <div class="lat-button">${place.lat}</div>
+      <div class="lon-button">${place.lon}</div>
     </li>`
-  })
+    
+    
+  });
  
 searchedCities.innerHTML=location  
 console.log(location);
