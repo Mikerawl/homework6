@@ -10,12 +10,14 @@
     />
     <title>WeatherJS</title>
   </head>
-  <body>
+  <html>
     <div class="fluid-container bg-secondary">
       <h1 class="text-center fw-bold">5 Day Weather</h1>
     </div>
+
     <div class="container">
-      <div class="row">
+      <div class="row jusitify-content-center">
+        
         <div class="col-3">
           <div class="card">
             <div class="card-body">
@@ -31,37 +33,39 @@
               </form>
             </div>
           </div>
-
-          <div class="card">
-            <div class="card-body">This is some text within a card body.</div>
-          </div>
         </div>
-
-        <div class="card col-9">
-          <div class="card-body">
-            <!-- The current day's weather goes here -->
-            <div class="card" id="current-weather"></div>
-
-            <h2>5 Day Forecast</h2>
-
-            <div class="card col-9" id="five-day-weather">
-              <!-- five day forecast is inserted here -->
-              <p>hello</p>
-            </div>
-          </div>
-        </div>
-        <!-- End of the weather div. -->
       </div>
-      <!-- This is the end of the row. -->
+    </div>  
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+          <h3>Searched Cities</h3>
+          <ul id="searched-cities">
+            
+            
+          </ul>
+        </div>
+
+<!-- Ten collum row to hold the weather for the five day forcast. -->
+    <div class="col-md-10">
+      <div class="container">
+        <div class="row">
+          <div class="card-body" id="current-weather">
+            
+          </div>
+        </div>
+        <div class="row" id="five-day-weather">
+        </div>
+      </div>
+      </div>
+    </div>
+    </div>
     </div>
 
-    <!-- This unordered list is included to add future functionality to this project for an improved portfolio item. -->
-    <!-- <ul id="w-details" class="list-group mt-3">
-              <li class="list-group-item" id="w-humidity"></li>
-              <li class="list-group-item" id="w-dewpoint"></li>
-              <li class="list-group-item" id="w-feels-like"></li>
-              <li class="list-group-item" id="w-wind"></li>
-            </ul> -->
+    
+
+
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

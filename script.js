@@ -1,6 +1,5 @@
 async function getCity() {
   var form = document.querySelector("form");
-  console.log(form);
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     var city = document.querySelector("form").firstElementChild.value;
@@ -18,7 +17,7 @@ async function getWeather() {
   var currentWeather = document.getElementById("current-weather");
   var city = document.querySelector("form").firstElementChild.value;
   // city = city.value;
-  console.log(city);
+  
 
   var response = await fetch(
     `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`
@@ -33,7 +32,7 @@ async function getWeather() {
   );
 
   var weather = await res.json();
-  console.log(weather.current.temp);
+  
 
   // This is for the current day's weather (day)
   currentWeather.innerHTML = `<h1 id="w-location">${city} and ${weather.current.dt}</h1>
@@ -50,11 +49,11 @@ async function getWeather() {
   let fiveDayWeather = document.getElementById("five-day-weather");
   let day = "";
   const dailies = weather.daily;
-  console.log(fiveDayWeather);
+  
   dailies.pop();
   dailies.pop();
   dailies.pop();
-  console.log(dailies);
+  
 
   dailies.forEach((daily) => {
     day += `<h1 id="w-location">${daily.dt}</h1>
@@ -67,21 +66,47 @@ async function getWeather() {
   });
 
   fiveDayWeather.innerHTML = day;
-}
-
-function storeData() {
-  const addEntry = {
-    lat: lat,
-    lon: lon,
-    city: city,
+  
+  // This is the code that stores the data into local memory.
+  var addEntry = {
+    "lat": lat,
+    "lon": lon,
+    "city": city,
   };
-  searchedCities = JSON.parse(localStorage.getItem("searched-cities"));
 
-  cityExists = searchedCities.some((obj) => obj.city === addEntry.city);
+  
+  searchedCities = JSON.parse(localStorage.getItem("searched-cities")) || [];
+
+  cityExists = searchedCities.some(obj => obj.city === addEntry.city);
 
   if (!cityExists) {
     localStorage.setItem("addEntry", JSON.stringify(addEntry));
     searchedCities.push(addEntry);
-    localStorage.set("searched-cities", JSON.stringify(searchedCity));
+    localStorage.setItem("searched-cities", JSON.stringify(searchedCities));
   }
+
 }
+function retrieveData() {
+
+  
+  let existingCities = JSON.parse(localStorage.getItem("searched-cities"));
+console.log(existingCities[0].city);
+  var searchedCities = document.getElementById("searched-cities");
+   console.log(searchedCities, "hello");
+
+location=""
+
+ existingCities.forEach((place) => {
+    location += 
+    `<li>
+    hello
+      // <button>${place.city}</button>
+      // <div class="lat-button">${place.lat}</div>
+      // <div class="lon-button">${place.lon}</div>
+    </li>`
+  })
+ 
+searchedCities.innerHTML=location  
+console.log(location);
+}
+retrieveData()
