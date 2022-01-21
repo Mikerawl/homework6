@@ -82,9 +82,14 @@ async function generalWeather() {
 
   var weather = await res.json();
 
+  let date = new Date(weather.current.dt * 1000);
+  const options = { weekday: "long", month: "long", day: "numeric" };
+  console.log(date.toLocaleDateString("en-US", options));
+  let todayDate = date.toLocaleDateString("en-US", options);
+
   // This is for the current day's weather (day)
   currentWeather.innerHTML = `<div class="card-title">${city}</div>  
-  <h1 id="w-location">${weather.current.dt}</h1>
+  <h1 id="w-date">${todayDate}</h1>
 <h3 class="text-dark" id="w-desc">${weather.current.weather[0].description}</h3>
 <p id="w-string">${weather.current.temp}</p>
 <p>Wind ${weather.current.wind_deg}</p>
@@ -101,18 +106,44 @@ async function generalWeather() {
   dailies.pop();
 
   dailies.forEach((daily) => {
+    let date = new Date(daily.dt * 1000);
+    const options = { weekday: "long", month: "long", day: "numeric" };
+    console.log(date.toLocaleDateString("en-US", options));
+    let weekday = date.toLocaleDateString("en-US", options);
+
     day += `
-    <div class="col-md-2"><h1 id="w-location">${daily.dt}</h1>
-<h3 class="text-dark" id="w-desc">${daily.weather[0].description}</h3>
+    <div class="col-md-2">
+    <h4 id="date">${weekday}</h4>
+
+<h5 class="text-dark" id="w-desc">${daily.weather[0].description}</h5>
 <p id="w-string">${daily.temp.day}</p>
 <p>Wind ${daily.wind_deg}</p>
 <p>Humidity ${daily.humidity}</p>
-<p class="uv-index">UV Index <span class="uv-number">${daily.uvi}</span></p>
+<p class="uv-index">UV Index 
+  <span class="uv-number">${daily.uvi}</span>
+</p>
 <img id="w-icon" style = "width: 100px" src="https://openweathermap.org/img/w/${daily.weather[0].icon}.png"/>
 </div>`;
   });
 
   fiveDayWeather.innerHTML = day;
+  uvWarning();
+}
+
+function uvWarning() {
+  let uvValues = document.querySelectorAll(".uv-index");
+
+  uvValues.forEach((uvVal) => {
+    let dailyUv = uvVal.firstElementChild.innerText;
+
+    if (dailyUv <= 2) {
+      uvVal.classList.add("d-inline", "p-2", "bg-success", "text-white");
+    } else if (dailyUv > 2 && dailyUv <= 7) {
+      uvVal.classList.add("d-inline", "p-2", "bg-warning", "text-white");
+    } else {
+      uvVal.classList.add("d-inline", "p-2", "bg-danger", "text-white");
+    }
+  });
 }
 
 function retLatLon() {
@@ -121,7 +152,10 @@ function retLatLon() {
   previousCities.forEach((indivCity) => {
     indivCity.addEventListener("click", (event) => {
       // info coming from the DOM
-      let latSearched = indivCity.nextElementSibling;
+      let latSearched;
+
+      indivCity.nextElementSibling;
+
       let lonSearched = latSearched.nextElementSibling;
 
       city = indivCity.innerText;
