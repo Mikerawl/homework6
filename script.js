@@ -152,7 +152,7 @@ function retLatLon() {
   previousCities.forEach((indivCity) => {
     indivCity.addEventListener("click", (event) => {
       // info coming from the DOM
-      let latSearched.indivCity.nextElementSibling;
+      let latSearched = indivCity.nextElementSibling;
 
       let lonSearched = latSearched.nextElementSibling;
 
