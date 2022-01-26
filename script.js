@@ -146,7 +146,7 @@ function uvWarning() {
   });
 }
 
-function retLatLon() {
+async function retLatLon() {
   let previousCities = document.querySelectorAll(".city-button");
 
   previousCities.forEach((indivCity) => {
